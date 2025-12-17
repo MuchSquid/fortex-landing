@@ -1,0 +1,28 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { Navbar } from "../components/Navbar";
+import { Hero } from "../components/Hero";
+import { ProblemSection } from "../components/ProblemSection";
+import { SolutionSection } from "../components/SolutionSection";
+import { SuiteOneTex } from "../components/SuiteOneTex";
+import { Comparison } from "../components/Comparison";
+import { ProcessStepper } from "../components/ProcessStepper";
+import { TransformationBanner } from "../components/TransformationBanner";
+import { Footer } from "../components/Footer";
+---
+
+<Layout title="Fortex Digital Solutions | Control Operativo Digital">
+  <Navbar client:load />
+
+  <main>
+    <Hero client:load />
+    <ProblemSection client:visible />
+    <SolutionSection client:visible />
+    <SuiteOneTex client:visible />
+    <Comparison client:visible />
+    <ProcessStepper client:visible />
+    <TransformationBanner client:visible />
+  </main>
+
+  <Footer />
+</Layout>
