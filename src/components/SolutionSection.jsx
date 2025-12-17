@@ -5,7 +5,7 @@ import { Button } from './ui/Button';
 
 export const SolutionSection = () => {
   return (
-    <section id="control" className="py-32 bg-[#0a0a0a] relative overflow-hidden">
+    <section id="control" className="py-20 md:py-32 bg-[#0a0a0a] relative overflow-hidden">
       {/* Background Glows */}
       <div className="absolute top-0 right-0 w-full h-full overflow-hidden pointer-events-none">
           <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-[600px] h-[600px] bg-blue-600/20 rounded-full blur-[120px] animate-pulse" />

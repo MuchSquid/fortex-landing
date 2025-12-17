@@ -86,12 +86,12 @@ export const SuiteOneTex = () => {
 
         <div className="grid lg:grid-cols-12 gap-12">
           {/* Left: Interactive List */}
-          <div className="lg:col-span-5 flex flex-col gap-4">
+          <div className="lg:col-span-5 flex flex-row lg:flex-col gap-4 overflow-x-auto pb-4 lg:pb-0 hide-scrollbar snap-x">
             {benefits.map((benefit) => (
               <button
                 key={benefit.id}
                 onClick={() => setActiveTab(benefit.id)}
-                className={`text-left p-6 rounded-xl border transition-all duration-300 group ${
+                className={`text-left p-4 lg:p-6 rounded-xl border transition-all duration-300 group min-w-[260px] lg:min-w-0 snap-center ${
                   activeTab === benefit.id 
                     ? `bg-white/5 ${benefit.border} shadow-lg shadow-white/5` 
                     : 'bg-white/5 border-white/5 hover:bg-white/10 hover:border-white/10'

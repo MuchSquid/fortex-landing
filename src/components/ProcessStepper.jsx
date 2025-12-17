@@ -67,7 +67,7 @@ export const ProcessStepper = () => {
     ];
 
   return (
-    <section className="py-24 bg-[#0a0a0a] relative overflow-hidden">
+    <section className="py-20 md:py-24 bg-[#0a0a0a] relative overflow-hidden">
         {/* Background Beams */}
         <div className="absolute inset-0 flex justify-center opacity-10 pointer-events-none">
             <div className="w-[1px] h-full bg-gradient-to-b from-transparent via-blue-500 to-transparent" />
@@ -86,7 +86,7 @@ export const ProcessStepper = () => {
         {/* Stepper Logic */}
         <div className="max-w-4xl mx-auto">
             {/* Steps Indicator */}
-            <div className="flex justify-between items-center mb-16 relative overflow-x-auto py-4 px-2 hide-scrollbar">
+            <div className="flex justify-between items-center mb-12 md:mb-16 relative overflow-x-auto py-4 px-2 hide-scrollbar">
                  <div className="hidden md:block absolute top-1/2 left-0 w-full h-0.5 bg-white/10 -z-10" />
                  {steps.map((step) => (
                      <button 
@@ -116,7 +116,7 @@ export const ProcessStepper = () => {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -20 }}
                     transition={{ duration: 0.3 }}
-                    className="bg-gradient-to-br from-white/5 to-transparent border border-white/10 rounded-3xl p-8 md:p-12 text-center"
+                    className="bg-gradient-to-br from-white/5 to-transparent border border-white/10 rounded-3xl p-6 md:p-12 text-center"
                 >
                     <div className="inline-block px-3 py-1 rounded-full bg-blue-500/10 text-blue-500 text-xs font-bold mb-6">
                         Paso {activeStep}: {activeStep === 1 ? 'En curso' : 'Siguiente'}

@@ -27,7 +27,7 @@ export const ProblemSection = () => {
   ];
 
   return (
-    <section id="problematica" className="py-40 bg-[#0a0a0a] relative overflow-hidden">
+    <section id="problematica" className="py-20 md:py-40 bg-[#0a0a0a] relative overflow-hidden">
         {/* Background Gradients */}
         <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-red-600/20 rounded-full blur-[120px] opacity-50 animate-pulse" />
@@ -36,7 +36,7 @@ export const ProblemSection = () => {
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
           <span className="text-red-500 font-bold tracking-wider uppercase text-sm">Problemática</span>
-          <h2 className="text-3xl md:text-5xl font-bold text-white">
+          <h2 className="text-3xl md:text-5xl font-bold text-white leading-tight">
             La mayoría de las operaciones no fallan por tecnología. <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-900">Fallan por desorden.</span>
           </h2>

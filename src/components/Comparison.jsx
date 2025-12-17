@@ -4,7 +4,7 @@ import { Button } from './ui/Button';
 
 export const Comparison = () => {
   return (
-    <section id="comparativa" className="py-24 bg-gradient-to-b from-[#0a0a0a] to-[#0f172a]">
+    <section id="comparativa" className="py-20 md:py-24 bg-gradient-to-b from-[#0a0a0a] to-[#0f172a]">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <span className="text-gray-500 font-bold tracking-wider uppercase text-sm">¿Es para ti?</span>
