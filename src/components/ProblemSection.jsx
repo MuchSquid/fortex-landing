@@ -1,68 +1,77 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { AlertCircle, Clock, Database, CloudOff } from 'lucide-react';
 
 export const ProblemSection = () => {
   const problems = [
     {
-      icon: AlertCircle,
-      title: "Dependencia de Personas",
-      description: "La operación funciona gracias a personas específicas, no a un sistema. Si ellos faltan, el conocimiento se pierde."
+      number: "01",
+      title: "Dependencia Humana",
+      description: "La operación funciona gracias a personas específicas crónicas, no a un sistema. Si ellos faltan, el conocimiento fundacional se pierde."
     },
     {
-      icon: Clock,
-      title: "Decisiones Tardías",
-      description: "Las decisiones se toman tarde y a ciegas, basadas en relatos anecdóticos en lugar de datos reales y medibles."
+      number: "02",
+      title: "Ceguera Táctica",
+      description: "Las decisiones se toman tarde, basadas en relatos anecdóticos en lugar de métricas crudas y reales de la operación inmediata."
     },
     {
-      icon: Database,
-      title: "Sin Trazabilidad Real",
-      description: "Lo que pasó se 'explica' pero no se prueba. No existe un registro inmutable de acciones y responsabilidades."
+      number: "03",
+      title: "Sin Trazabilidad",
+      description: "Lo que pasó se 'explica' pero jamás se prueba. No existe un registro inmutable de acciones, tiempo y responsabilidades."
     },
     {
-      icon: CloudOff,
+      number: "04",
       title: "Escalar es Caos",
-      description: "Crecer significa aumentar el desorden. Más clientes y equipos multiplican los problemas en lugar de la eficiencia."
+      description: "Crecer significa inflar el desorden. Más clientes y equipos no multiplican la eficiencia, multiplican el costo operativo."
     }
   ];
 
   return (
-    <section id="problematica" className="py-20 md:py-40 bg-[#0a0a0a] relative overflow-hidden">
-        {/* Background Gradients */}
-        <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-red-600/20 rounded-full blur-[120px] opacity-50 animate-pulse" />
+    <section id="problematica" className="py-24 md:py-40 bg-black relative border-t border-white/10">
+      <div className="container mx-auto px-4 lg:px-8 max-w-7xl relative z-10">
+        
+        <div className="flex flex-col md:flex-row justify-between items-start gap-12 mb-20">
+          <div className="max-w-xl">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="flex items-center gap-4 text-gray-500 font-mono text-sm uppercase tracking-widest mb-8"
+            >
+              <span className="w-8 h-px bg-red-600"></span>
+              Diagnóstico
+            </motion.div>
+            <h2 className="text-4xl md:text-6xl font-bold text-white leading-none tracking-tighter uppercase">
+              La fractura <br />
+              <span className="text-red-500">operativa.</span>
+            </h2>
+          </div>
+          <div className="max-w-md pt-4">
+            <p className="text-gray-400 text-lg font-light">
+              La mayoría de las operaciones complejas no colapsan por falta de tecnología. Colapsan por desorden estructural, asimetría de información y dependencia de héroes individuales.
+            </p>
+          </div>
         </div>
 
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-          <span className="text-red-500 font-bold tracking-wider uppercase text-sm">Problemática</span>
-          <h2 className="text-3xl md:text-5xl font-bold text-white leading-tight">
-            La mayoría de las operaciones no fallan por tecnología. <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-900">Fallan por desorden.</span>
-          </h2>
-          <p className="text-gray-400 text-lg">
-            Información dispersa y falta de visibilidad terminan costando tiempo, dinero y control.
-          </p>
-        </div>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-0 border border-white/10">
           {problems.map((problem, index) => (
             <motion.div 
               key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              whileHover={{ y: -5 }}
-              className="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-red-500/50 hover:bg-red-900/10 transition-all duration-300 group"
+              className="p-8 md:p-10 bg-transparent border-b lg:border-b-0 lg:border-r border-white/10 last:border-b-0 last:border-r-0 hover:bg-white/5 transition-colors duration-300 group flex flex-col justify-between min-h-[320px]"
             >
-              <div className="w-12 h-12 rounded-lg bg-red-500/10 text-red-500 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                <problem.icon size={24} />
+              <div className="text-4xl font-bold font-mono text-white/20 group-hover:text-red-500 transition-colors duration-300 mb-8">
+                //{problem.number}
               </div>
-              <h3 className="text-xl font-bold text-white mb-2">{problem.title}</h3>
-              <p className="text-gray-400 text-sm leading-relaxed">
-                {problem.description}
-              </p>
+              
+              <div>
+                <h3 className="text-xl font-bold text-white uppercase tracking-tight mb-4 group-hover:text-red-400 transition-colors">{problem.title}</h3>
+                <p className="text-gray-400 font-light leading-relaxed">
+                  {problem.description}
+                </p>
+              </div>
             </motion.div>
           ))}
         </div>

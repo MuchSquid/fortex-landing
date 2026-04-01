@@ -1,76 +1,85 @@
 import React from 'react';
-import { Check, X, ArrowRight } from 'lucide-react';
+import { Check, X } from 'lucide-react';
 import { Button } from './ui/Button';
 
 export const Comparison = () => {
   return (
-    <section id="comparativa" className="py-20 md:py-24 bg-gradient-to-b from-[#0a0a0a] to-[#0f172a]">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <span className="text-gray-500 font-bold tracking-wider uppercase text-sm">¿Es para ti?</span>
-          <h2 className="text-3xl md:text-5xl font-bold text-white mt-2">
-            La decisión correcta
+    <section id="comparativa" className="py-32 bg-black border-t border-white/10">
+      <div className="container mx-auto px-4 lg:px-8 max-w-7xl">
+        <div className="text-center mb-24">
+          <span className="text-gray-500 font-mono tracking-widest uppercase text-sm border-b border-gray-600 pb-1">Despliegue Técnico</span>
+          <h2 className="text-4xl md:text-6xl font-bold text-white mt-8 uppercase tracking-tighter">
+            La decisión.
           </h2>
-          <p className="text-gray-400 mt-4 max-w-2xl mx-auto">
-            Compara escenarios y elige la herramienta que se adapte al estado actual de tu operación.
+          <p className="text-gray-400 mt-4 max-w-2xl mx-auto font-light text-lg">
+            Dos vías arquitectónicas. Elige la infraestructura que soporte el peso operativo de tu negocio.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <div className="grid lg:grid-cols-2 gap-0 border border-white/20">
           {/* Card: Operate OneTex */}
-          <div className="rounded-3xl p-8 border border-blue-500/30 bg-blue-500/5 relative overflow-hidden flex flex-col">
-            <div className="absolute top-0 left-0 w-full h-1 bg-blue-500" />
+          <div className="p-10 md:p-16 border-b lg:border-b-0 lg:border-r border-white/20 bg-white/5 relative flex flex-col group hover:bg-white/10 transition-colors duration-500">
+            {/* Minimalist Top Indicator */}
+            <div className="absolute top-0 right-0 w-16 h-16 border-b border-l border-white/20 flex items-center justify-center font-mono text-xs text-white bg-transparent">
+              OP_1
+            </div>
             
-            <div className="mb-8">
-              <h3 className="text-2xl font-bold text-white mb-2">Operate OneTex</h3>
-              <p className="text-blue-400 text-sm font-medium">Ideal para orden inmediato</p>
+            <div className="mb-12">
+              <h3 className="text-4xl font-bold text-white mb-2 uppercase tracking-tighter">OneTex</h3>
+              <p className="text-white font-mono uppercase text-xs tracking-widest bg-white/10 inline-block px-2 py-1">Estándar Operativo Inmediato</p>
             </div>
 
-            <ul className="space-y-4 mb-8 flex-1">
+            <ul className="space-y-6 mb-16 flex-1">
               {[
                 "La gestión vive en Excel o papel.",
-                "Trazabilidad depende de la memoria.",
-                "Sin sistema centralizado.",
-                "Control reactivo (post-fallo)."
+                "Trazabilidad depende de la memoria humana.",
+                "Carencia absoluta de un sistema centralizado.",
+                "Control reactivo: se opera cuando el error ya ocurrió."
               ].map((item, i) => (
-                <li key={i} className="flex items-start gap-3">
-                  <div className="mt-1 p-0.5 rounded-full bg-blue-500/20 text-blue-500">
-                    <Check size={14} strokeWidth={3} />
+                <li key={i} className="flex items-start gap-4">
+                  <div className="mt-1 flex-shrink-0 text-white">
+                    <Check size={18} strokeWidth={2} />
                   </div>
-                  <span className="text-gray-300 text-sm">{item}</span>
+                  <span className="text-gray-300 font-light leading-relaxed">{item}</span>
                 </li>
               ))}
             </ul>
 
-            <Button className="w-full justify-center">Elegir OneTex</Button>
+            <a href="/demo" className="text-center w-full block border border-white text-black bg-white px-8 py-4 font-bold uppercase tracking-widest text-sm hover:bg-transparent hover:text-white transition-colors">
+              Implementar OneTex
+            </a>
           </div>
 
           {/* Card: Custom/Integration */}
-          <div className="rounded-3xl p-8 border border-white/5 bg-white/5 flex flex-col">
-             <div className="mb-8">
-              <h3 className="text-2xl font-bold text-white mb-2">Integración / Desarrollo</h3>
-              <p className="text-gray-500 text-sm font-medium">Para operaciones complejas o legacy</p>
+          <div className="p-10 md:p-16 relative flex flex-col group hover:bg-white/5 transition-colors duration-500">
+            <div className="absolute top-0 right-0 w-16 h-16 border-b border-l border-white/20 flex items-center justify-center font-mono text-xs text-gray-400 bg-transparent">
+              OP_2
             </div>
 
-             <ul className="space-y-4 mb-8 flex-1">
+             <div className="mb-12">
+              <h3 className="text-4xl font-bold text-gray-400 mb-2 uppercase tracking-tighter group-hover:text-white transition-colors">A Medida</h3>
+              <p className="text-gray-500 font-mono uppercase text-xs tracking-widest border border-gray-600 inline-block px-2 py-1">Infraestructura Legacy</p>
+            </div>
+
+             <ul className="space-y-6 mb-16 flex-1">
               {[
-                "Ya tienes un sistema legacy.",
-                "Procesos muy específicos/únicos.",
-                "Necesitas extender lo existente.",
-                "Buscas integración, no remplazo."
+                "Ya existe un sistema legacy pesado.",
+                "Procesos ultra específicos/únicos del sector.",
+                "Necesidad de extender arquitectura existente.",
+                "Integración requerida por compliance."
               ].map((item, i) => (
-                <li key={i} className="flex items-start gap-3">
-                  <div className="mt-1 p-0.5 rounded-full bg-gray-700 text-gray-400">
-                    <X size={14} strokeWidth={3} />
+                <li key={i} className="flex items-start gap-4">
+                  <div className="mt-1 flex-shrink-0 text-red-500">
+                    <X size={18} strokeWidth={2} />
                   </div>
-                  <span className="text-gray-400 text-sm">{item}</span>
+                  <span className="text-gray-400 font-light leading-relaxed">{item}</span>
                 </li>
               ))}
             </ul>
 
-            <Button variant="outline" className="w-full justify-center hover:bg-white/5 border-white/20 text-white">
-              Consultar Desarrollo
-            </Button>
+            <a href="/contacto" className="text-center w-full block border border-white/20 text-white bg-transparent px-8 py-4 font-bold uppercase tracking-widest text-sm hover:border-white transition-colors">
+              Requerir Desarrollo
+            </a>
           </div>
         </div>
       </div>

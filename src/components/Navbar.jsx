@@ -16,12 +16,9 @@ export const Navbar = () => {
   }, []);
 
   const navLinks = [
-    { name: 'Inicio', href: '/' },
-    { name: 'Problemática', href: '/#problematica' },
-    { name: 'Control', href: '/#control' },
-    { name: 'Suite OneTex', href: '/#onetex' },
-    { name: 'Comparativa', href: '/#comparativa' },
-    { name: 'Contacto', href: '/#contacto' },
+    { name: 'Agencia Fortex', href: '/' },
+    { name: 'Operate OneTex', href: '/onetex' },
+    { name: 'Contacto', href: '/contacto' },
   ];
 
   return (
@@ -31,13 +28,12 @@ export const Navbar = () => {
         : 'bg-transparent py-4 lg:py-6'
     }`}>
       <div className="container mx-auto px-4 flex items-center justify-between relative">
-        {/* Logo */}
-        <a href="#" className="flex items-center gap-2 group relative z-50">
-          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-blue-500/20">
+        <a href="/" className="flex items-center gap-2 group relative z-50">
+          <div className="w-8 h-8 rounded-none border border-white bg-white flex items-center justify-center text-black font-bold text-xl">
             F
           </div>
-          <span className="text-xl font-bold tracking-tight text-white">
-            Fortex <span className="text-blue-500">.</span>
+          <span className="text-xl font-bold tracking-tight text-white uppercase">
+            Fortex <span className="text-gray-500">.</span>
           </span>
         </a>
 
@@ -54,10 +50,9 @@ export const Navbar = () => {
           ))}
         </div>
 
-        {/* CTA Buttons */}
         <div className="hidden lg:flex items-center gap-4 relative z-50">
-          <Button variant="ghost" className="px-4 text-gray-300 hover:text-white">Contáctanos</Button>
-          <Button href="/demo">Solicitar demo</Button>
+          <Button href="/contacto" variant="ghost" className="px-4 text-gray-300 hover:text-white">Contáctanos</Button>
+          <Button href="/contacto">Solicitar demo</Button>
         </div>
 
         {/* Mobile Toggle */}
