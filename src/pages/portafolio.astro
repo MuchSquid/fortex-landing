@@ -1,0 +1,16 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { Navbar } from "../components/Navbar";
+import { PortafolioGallery } from "../components/PortafolioGallery";
+import { Footer } from "../components/Footer";
+---
+
+<Layout title="Portafolio | Fortex Digital Solutions">
+  <Navbar client:load />
+
+  <main>
+    <PortafolioGallery client:load />
+  </main>
+
+  <Footer />
+</Layout>

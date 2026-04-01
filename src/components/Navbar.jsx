@@ -17,6 +17,7 @@ export const Navbar = () => {
 
   const navLinks = [
     { name: 'Agencia Fortex', href: '/' },
+    { name: 'Portafolio', href: '/portafolio' },
     { name: 'Operate OneTex', href: '/onetex' },
     { name: 'Contacto', href: '/contacto' },
   ];
