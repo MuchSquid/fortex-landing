@@ -4,18 +4,18 @@ import { motion, useInView, useMotionTemplate, useMotionValue } from 'framer-mot
 const benefits = [
   {
     number: "01",
-    title: "Acelera Procesos",
-    description: "Eliminamos tareas manuales y cuellos de botella. Automatizamos el caos operativo para que tu equipo aporte valor real.",
+    title: "Ventas & Conversión",
+    description: "Arquitecturas digitales hechas a medida. Colocamos los puntos de conversión donde la psicología de tu cliente toma decisiones de compra.",
   },
   {
     number: "02",
-    title: "Escala Fuerte",
-    description: "Crecer con hojas de cálculo no es escalable. Construimos infraestructura digital para manejar 10x más carga operativa sin fricción mediante Operate.",
+    title: "Velocidad Extrema",
+    description: "Tu cliente valora su tiempo. Código limpio y nativo para carga instantánea, reduciendo rebotes y potenciando tu SEO de inmediato.",
   },
   {
     number: "03",
-    title: "Max. Ventas",
-    description: "Desde E-Commerces optimizados hasta integraciones CRM. Diseñamos ecosistemas digitales enfocados exclusivamente en conversión.",
+    title: "Escalabilidad CRM",
+    description: "Para las ventas de hoy y la expansión de mañana. Estructuras integradas, listas para conectarse con CRMs y automatizaciones avanzadas.",
   }
 ];
 
@@ -111,8 +111,8 @@ export const FortexValueProp = () => {
               transition={{ duration: 0.8 }}
               className="text-4xl md:text-6xl font-bold tracking-tighter text-white uppercase leading-none"
             >
-              Hardware invisible. <br />
-              <span className="text-gray-600">Impacto visible.</span>
+              Máquinas de<br />
+              <span className="text-gray-600">Conversión.</span>
             </motion.h2>
           </div>
 
@@ -124,7 +124,7 @@ export const FortexValueProp = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="text-lg text-zinc-400 font-light"
             >
-              No vendemos código abstracto. Diseñamos e implementamos sistemas interactivos radicalmente enfocados en resolver los desafíos tácticos de rentabilidad y escala corporativa.
+              No hacemos folletos digitales. Diseñamos e implementamos plataformas web de altísima velocidad, enfocadas radicalmente en el retorno de inversión y la escalabilidad de tu negocio.
             </motion.p>
           </div>
 

@@ -136,9 +136,9 @@ export const FortexHero = () => {
 
           {/* Brutalist Huge Headline */}
           <div className="flex flex-col gap-2 w-full">
-            <AnimatedText delayOffset={0.2} text="Crea." className="text-6xl md:text-8xl lg:text-[10rem] font-black tracking-[-0.04em] text-white leading-[0.9] text-left" />
-            <AnimatedText delayOffset={0.6} text="Escala." className="text-6xl md:text-8xl lg:text-[10rem] font-black tracking-[-0.04em] text-gray-600 leading-[0.9] text-left" />
-            <AnimatedText delayOffset={1.0} text="Domina." className="text-6xl md:text-8xl lg:text-[10rem] font-black tracking-[-0.04em] text-white leading-[0.9] text-left" />
+            <AnimatedText delayOffset={0.2} text="Atrae." className="text-6xl md:text-8xl lg:text-[10rem] font-black tracking-[-0.04em] text-white leading-[0.9] text-left" />
+            <AnimatedText delayOffset={0.6} text="Convierte." className="text-6xl md:text-8xl lg:text-[10rem] font-black tracking-[-0.04em] text-[#0047FF] leading-[0.9] text-left" />
+            <AnimatedText delayOffset={1.0} text="Escala." className="text-6xl md:text-8xl lg:text-[10rem] font-black tracking-[-0.04em] text-white leading-[0.9] text-left" />
           </div>
 
           <motion.div
@@ -148,7 +148,7 @@ export const FortexHero = () => {
             className="grid grid-cols-1 md:grid-cols-2 w-full gap-8 mt-8 border-t border-white/10 pt-8"
           >
             <p className="text-xl md:text-2xl text-gray-400 font-light leading-relaxed max-w-xl">
-              Desde landing pages de alto impacto hasta arquitectura de software a medida. Construimos la infraestructura técnica que sostiene tu escalabilidad.
+              Ingeniería de Landing Pages y E-commerce de velocidad extrema, diseñados con un solo propósito: convertir tu tráfico en ingresos y prepararte para escalar.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 items-start md:justify-end">

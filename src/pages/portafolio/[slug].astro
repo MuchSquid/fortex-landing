@@ -1,0 +1,124 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { Navbar } from "../../components/Navbar";
+import { Footer } from "../../components/Footer";
+import { projects } from "../../data/portfolio";
+
+export function getStaticPaths() {
+  return projects.map((project) => ({
+    params: { slug: project.slug },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+---
+
+<Layout title={`${project.title} | Portafolio | Fortex Digital Solutions`}>
+  <Navbar client:load />
+
+  <main class="min-h-screen bg-[#050505]">
+    {/* Hero Section of the Project */}
+    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+      <div class="absolute inset-0 bg-linear-to-b from-blue-900/10 via-[#050505] to-[#050505] pointer-events-none"></div>
+      
+      <div class="container mx-auto px-4 relative z-10">
+        <div class="max-w-4xl mx-auto">
+          {/* Back button */}
+          <a href="/portafolio" class="inline-flex items-center gap-2 text-sm font-medium text-gray-500 hover:text-white transition-colors mb-8 group">
+            <svg class="w-4 h-4 transition-transform group-hover:-translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+            </svg>
+            Volver al Portafolio
+          </a>
+
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-2 h-2 rounded-full" style={`background-color: ${project.accent}`}></div>
+            <span class="text-sm font-bold text-gray-400 uppercase tracking-widest">{project.category}</span>
+          </div>
+          
+          <h1 
+            class="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-8"
+            style={`view-transition-name: project-title-${project.slug}`}
+          >
+            {project.title}
+          </h1>
+
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-8 py-8 border-y border-white/10 mb-12">
+            <div>
+              <span class="block text-sm text-gray-500 uppercase font-bold tracking-wider mb-1">Cliente</span>
+              <span class="text-white text-lg">{project.client}</span>
+            </div>
+            <div>
+              <span class="block text-sm text-gray-500 uppercase font-bold tracking-wider mb-1">Año</span>
+              <span class="text-white text-lg">{project.year}</span>
+            </div>
+            <div>
+              <span class="block text-sm text-gray-500 uppercase font-bold tracking-wider mb-1">Rol</span>
+              <span class="text-white text-lg">{project.role}</span>
+            </div>
+            <div>
+              <span class="block text-sm text-gray-500 uppercase font-bold tracking-wider mb-1">Tecnologías</span>
+              <div class="flex flex-wrap gap-2">
+                {project.tags.map(tag => (
+                  <span class="text-xs font-medium text-gray-300">{tag}</span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* Big Featured Image */}
+    <section class="container mx-auto px-4 pb-20">
+      <div 
+        class="w-full aspect-16/9 rounded-3xl overflow-hidden border border-white/10 shadow-2xl relative"
+        style={`view-transition-name: project-image-wrapper-${project.slug}`}
+      >
+        <img 
+          src={project.image} 
+          alt={`Vista principal del proyecto ${project.title}`}
+          class="w-full h-full object-cover"
+          style={`view-transition-name: project-image-${project.slug}`}
+        />
+        <div class="absolute inset-0 ring-1 ring-inset ring-white/10 rounded-3xl pointer-events-none"></div>
+      </div>
+    </section>
+
+    {/* Content Section */}
+    <section class="container mx-auto px-4 pb-32">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="text-3xl font-bold text-white mb-6">El Desafío</h2>
+        <p class="text-xl text-gray-400 leading-relaxed mb-12">
+          {project.longDescription}
+        </p>
+
+        <h2 class="text-3xl font-bold text-white mb-6">Nuestra Solución</h2>
+        <p class="text-lg text-gray-400 leading-relaxed mb-8">
+          A través de un enfoque centrado en el usuario final, replanteamos la arquitectura de la información y reconstruimos la plataforma desde cero utilizando el stack más moderno. Nuestro objetivo no era solo resolver sus problemas actuales, sino proveer una base técnica escalable para el próximo lustro.
+        </p>
+        
+        <div class="p-8 rounded-2xl bg-white/5 border border-white/10">
+          <h3 class="text-xl font-bold text-white mb-4">Resultados Clave</h3>
+          <ul class="space-y-4">
+            <li class="flex items-start gap-4">
+              <svg class="w-6 h-6 text-blue-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+              <span class="text-gray-300">Incremento del 150% en la velocidad de carga de la página principal.</span>
+            </li>
+            <li class="flex items-start gap-4">
+              <svg class="w-6 h-6 text-blue-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+              <span class="text-gray-300">Aumento significativo en las tasas de conversión y engagement.</span>
+            </li>
+            <li class="flex items-start gap-4">
+              <svg class="w-6 h-6 text-blue-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+              <span class="text-gray-300">Infraestructura altamente escalable lista para nuevos mercados.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
