@@ -2,59 +2,259 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const benefits = [
-  {
-    id: 'evidence',
-    title: "Todo registrado",
-    desc: "Cada orden, visita y responsable tiene evidencia.",
-    num: "01",
-    preview: "timeline"
-  },
-  {
-    id: 'status',
-    title: "Estado Real",
-    desc: "Ficha técnica viva por equipo con historial completo.",
-    num: "02",
-    preview: "status_card"
-  },
-  {
-    id: 'checklist',
-    title: "Cierre con Pruebas",
-    desc: "Checklists fotográficos firmados para evitar reclamos.",
-    num: "03",
-    preview: "checklist_ui"
-  },
-  {
-    id: 'roles',
-    title: "Accesos Claros",
-    desc: "Cada rol ve, edita y autoriza solo lo que le corresponde.",
-    num: "04",
-    preview: "rbac_ui"
-  },
-  {
-    id: 'alerts',
-    title: "Alertas Tempranas",
-    desc: "Identificación de cuellos de botella mediante semaforización.",
-    num: "05",
-    preview: "alert_ui"
-  },
-  {
-    id: 'audit',
-    title: "Auditoría Lista",
-    desc: "Operación estandarizada lista para inspecciones legales.",
-    num: "06",
-    preview: "audit_ui"
-  }
+  { id: 'evidence', title: "Todo registrado", desc: "Cada orden, visita y responsable tiene evidencia.", num: "01" },
+  { id: 'status',   title: "Estado Real",     desc: "Ficha técnica viva por equipo con historial completo.", num: "02" },
+  { id: 'checklist',title: "Cierre con Pruebas", desc: "Checklists fotográficos firmados para evitar reclamos.", num: "03" },
+  { id: 'roles',    title: "Accesos Claros",  desc: "Cada rol ve, edita y autoriza solo lo que le corresponde.", num: "04" },
+  { id: 'alerts',   title: "Alertas Tempranas", desc: "Identificación de cuellos de botella mediante semaforización.", num: "05" },
+  { id: 'audit',    title: "Auditoría Lista", desc: "Operación estandarizada lista para inspecciones legales.", num: "06" },
 ];
 
-// Placeholder for PreviewCard logic (assuming it exists in the original file or similar)
-const PreviewCard = ({ type }) => {
+// — Timeline preview —
+const TimelinePreview = () => {
+  const events = [
+    { time: '09:14', user: 'J. Rodríguez', action: 'Orden #4821 abierta', dot: 'bg-white' },
+    { time: '09:31', user: 'M. López',     action: 'Técnico asignado',     dot: 'bg-white' },
+    { time: '11:05', user: 'C. Díaz',      action: 'Visita registrada',    dot: 'bg-white' },
+    { time: '11:47', user: 'C. Díaz',      action: 'Evidencia fotográfica añadida', dot: 'bg-white' },
+    { time: '12:20', user: 'Sistema',      action: 'Orden cerrada ✓',      dot: 'bg-green-500' },
+  ];
   return (
-    <div className="w-full h-full border border-white/10 bg-black flex items-center justify-center p-8">
-      <div className="text-gray-500 font-mono text-sm tracking-widest uppercase">
-        VISTA DE DATOS_ [ {type} ]
-      </div>
+    <div className="flex flex-col gap-0">
+      {events.map((e, i) => (
+        <motion.div
+          key={i}
+          initial={{ opacity: 0, x: -10 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: i * 0.08 }}
+          className="flex items-start gap-4 relative"
+        >
+          {/* vertical line */}
+          {i < events.length - 1 && (
+            <div className="absolute left-[7px] top-4 w-px h-full bg-white/10" />
+          )}
+          <div className={`w-3.5 h-3.5 rounded-full shrink-0 mt-0.5 border border-white/20 ${e.dot}`} />
+          <div className="pb-5 flex-1">
+            <div className="flex items-center gap-2 mb-0.5">
+              <span className="font-mono text-[10px] text-gray-600">{e.time}</span>
+              <span className="font-mono text-[10px] text-gray-500 uppercase tracking-wider">{e.user}</span>
+            </div>
+            <p className="text-xs text-gray-300">{e.action}</p>
+          </div>
+        </motion.div>
+      ))}
     </div>
   );
+};
+
+// — Status card preview —
+const StatusPreview = () => (
+  <div className="flex flex-col gap-4">
+    {[
+      { id: 'A4-2', name: 'HVAC Industrial',   status: 'OPERATIVO',   pct: 92, color: 'bg-green-500' },
+      { id: 'B2-7', name: 'Compresor Central', status: 'REVISIÓN',    pct: 60, color: 'bg-yellow-400' },
+      { id: 'C1-1', name: 'Generador Sur',     status: 'CRÍTICO',     pct: 18, color: 'bg-red-500' },
+    ].map((item, i) => (
+      <motion.div
+        key={i}
+        initial={{ opacity: 0, y: 8 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: i * 0.1 }}
+        className="border border-white/10 p-4 bg-white/[0.02]"
+      >
+        <div className="flex items-center justify-between mb-3">
+          <div>
+            <span className="font-mono text-[10px] text-gray-600 uppercase">#{item.id}</span>
+            <p className="text-sm font-bold text-white">{item.name}</p>
+          </div>
+          <span className={`font-mono text-[9px] uppercase tracking-widest px-2 py-1 ${
+            item.status === 'OPERATIVO' ? 'text-green-400 border border-green-500/30 bg-green-500/10' :
+            item.status === 'REVISIÓN'  ? 'text-yellow-400 border border-yellow-400/30 bg-yellow-400/10' :
+                                          'text-red-400 border border-red-500/30 bg-red-500/10'
+          }`}>
+            {item.status}
+          </span>
+        </div>
+        <div className="h-1 bg-white/5 w-full">
+          <motion.div
+            initial={{ width: 0 }}
+            animate={{ width: `${item.pct}%` }}
+            transition={{ duration: 0.8, delay: 0.2 + i * 0.1 }}
+            className={`h-full ${item.color}`}
+          />
+        </div>
+        <p className="font-mono text-[9px] text-gray-700 mt-1 text-right">{item.pct}% uptime</p>
+      </motion.div>
+    ))}
+  </div>
+);
+
+// — Checklist preview —
+const ChecklistPreview = () => {
+  const items = [
+    { label: 'Inspección inicial completada', done: true },
+    { label: 'Prueba de presión verificada',  done: true },
+    { label: 'Fotografía de estado tomada',   done: true },
+    { label: 'Firma del supervisor',          done: false },
+    { label: 'Reporte de cierre generado',    done: false },
+  ];
+  return (
+    <div className="flex flex-col gap-2">
+      <div className="flex items-center justify-between mb-4">
+        <span className="font-mono text-[10px] uppercase tracking-widest text-gray-600">Orden #4821 — Cierre</span>
+        <span className="font-mono text-[10px] text-gray-500">3/5</span>
+      </div>
+      {items.map((item, i) => (
+        <motion.div
+          key={i}
+          initial={{ opacity: 0, x: -8 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: i * 0.07 }}
+          className="flex items-center gap-3 p-3 border border-white/5 bg-white/[0.02]"
+        >
+          <div className={`w-4 h-4 border shrink-0 flex items-center justify-center ${item.done ? 'border-white bg-white' : 'border-white/20'}`}>
+            {item.done && (
+              <svg className="w-2.5 h-2.5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+              </svg>
+            )}
+          </div>
+          <span className={`text-xs ${item.done ? 'text-gray-400 line-through' : 'text-gray-300'}`}>
+            {item.label}
+          </span>
+        </motion.div>
+      ))}
+    </div>
+  );
+};
+
+// — RBAC preview —
+const RbacPreview = () => {
+  const roles = [
+    { name: 'Operario',   ver: true,  editar: false, aprobar: false, exportar: false },
+    { name: 'Supervisor', ver: true,  editar: true,  aprobar: false, exportar: false },
+    { name: 'Gerente',    ver: true,  editar: true,  aprobar: true,  exportar: true  },
+    { name: 'Admin',      ver: true,  editar: true,  aprobar: true,  exportar: true  },
+  ];
+  const cols = ['Ver', 'Editar', 'Aprobar', 'Exportar'];
+  return (
+    <div className="w-full">
+      <div className="grid grid-cols-5 border-b border-white/10 pb-2 mb-2">
+        <span className="font-mono text-[9px] uppercase tracking-wider text-gray-600">Rol</span>
+        {cols.map(c => (
+          <span key={c} className="font-mono text-[9px] uppercase tracking-wider text-gray-600 text-center">{c}</span>
+        ))}
+      </div>
+      {roles.map((role, i) => (
+        <motion.div
+          key={i}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: i * 0.08 }}
+          className="grid grid-cols-5 py-3 border-b border-white/5 items-center"
+        >
+          <span className="font-mono text-xs text-gray-300">{role.name}</span>
+          {[role.ver, role.editar, role.aprobar, role.exportar].map((allowed, j) => (
+            <div key={j} className="flex justify-center">
+              {allowed
+                ? <div className="w-4 h-4 bg-white flex items-center justify-center">
+                    <svg className="w-2.5 h-2.5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                : <div className="w-4 h-4 border border-white/10 flex items-center justify-center">
+                    <svg className="w-2.5 h-2.5 text-white/20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  </div>
+              }
+            </div>
+          ))}
+        </motion.div>
+      ))}
+    </div>
+  );
+};
+
+// — Alerts preview —
+const AlertsPreview = () => {
+  const alerts = [
+    { level: 'red',    label: 'CRÍTICO', equipo: 'Equipo #B2-7', msg: 'Sin revisión — 48h vencido', time: 'Hace 2h' },
+    { level: 'yellow', label: 'AVISO',   equipo: 'Orden #4920',  msg: 'Sin asignar — 6h pendiente', time: 'Hace 6h' },
+    { level: 'yellow', label: 'AVISO',   equipo: 'Sector C',     msg: '2 técnicos sin reportar',    time: 'Hace 1h' },
+    { level: 'green',  label: 'OK',      equipo: 'Sector A',     msg: 'Todo al día',                time: 'Ahora'  },
+  ];
+  const dot = { red: 'bg-red-500', yellow: 'bg-yellow-400', green: 'bg-green-500' };
+  const text = { red: 'text-red-400', yellow: 'text-yellow-400', green: 'text-green-400' };
+  return (
+    <div className="flex flex-col gap-2">
+      {alerts.map((a, i) => (
+        <motion.div
+          key={i}
+          initial={{ opacity: 0, x: -8 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: i * 0.08 }}
+          className="flex items-start gap-3 p-3 border border-white/5 bg-white/[0.02]"
+        >
+          <div className={`w-2 h-2 rounded-full mt-1.5 shrink-0 ${dot[a.level]}`} />
+          <div className="flex-1 min-w-0">
+            <div className="flex items-center gap-2 mb-0.5">
+              <span className={`font-mono text-[9px] uppercase tracking-widest font-bold ${text[a.level]}`}>{a.label}</span>
+              <span className="font-mono text-[9px] text-gray-600">{a.equipo}</span>
+            </div>
+            <p className="text-xs text-gray-400">{a.msg}</p>
+          </div>
+          <span className="font-mono text-[9px] text-gray-700 shrink-0">{a.time}</span>
+        </motion.div>
+      ))}
+    </div>
+  );
+};
+
+// — Audit log preview —
+const AuditPreview = () => {
+  const logs = [
+    { time: '14:32', user: 'admin',  action: 'EXPORT_REPORT',  status: '200' },
+    { time: '14:28', user: 'j.rod',  action: 'UPDATE_STATUS',  status: '200' },
+    { time: '14:15', user: 'm.lop',  action: 'ASSIGN_TECH',    status: '200' },
+    { time: '13:50', user: 'c.dia',  action: 'UPLOAD_PHOTO',   status: '200' },
+    { time: '13:44', user: 'admin',  action: 'DELETE_DRAFT',   status: '403' },
+    { time: '12:21', user: 'j.rod',  action: 'CLOSE_ORDER',    status: '200' },
+  ];
+  return (
+    <div className="w-full">
+      <div className="grid grid-cols-4 border-b border-white/10 pb-2 mb-1">
+        {['Hora', 'Usuario', 'Acción', 'Código'].map(h => (
+          <span key={h} className="font-mono text-[9px] uppercase tracking-wider text-gray-700">{h}</span>
+        ))}
+      </div>
+      {logs.map((l, i) => (
+        <motion.div
+          key={i}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: i * 0.06 }}
+          className="grid grid-cols-4 py-2 border-b border-white/[0.04] items-center"
+        >
+          <span className="font-mono text-[10px] text-gray-600">{l.time}</span>
+          <span className="font-mono text-[10px] text-gray-400">{l.user}</span>
+          <span className="font-mono text-[10px] text-gray-500 truncate">{l.action}</span>
+          <span className={`font-mono text-[10px] font-bold ${l.status === '200' ? 'text-green-500' : 'text-red-500'}`}>
+            {l.status}
+          </span>
+        </motion.div>
+      ))}
+    </div>
+  );
+};
+
+const previews = {
+  evidence:  <TimelinePreview />,
+  status:    <StatusPreview />,
+  checklist: <ChecklistPreview />,
+  roles:     <RbacPreview />,
+  alerts:    <AlertsPreview />,
+  audit:     <AuditPreview />,
 };
 
 export const SuiteOneTex = () => {
@@ -63,39 +263,54 @@ export const SuiteOneTex = () => {
   return (
     <section id="onetex" className="py-32 bg-black border-t border-white/10">
       <div className="container mx-auto px-4 lg:px-8 max-w-7xl">
+
         <div className="mb-20">
-          <span className="text-white font-mono tracking-widest uppercase text-sm border-b border-white pb-1">OneTex System</span>
-          <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mt-8 tracking-tighter uppercase leading-none">
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="flex items-center gap-4 text-gray-500 font-mono text-sm uppercase tracking-widest mb-6"
+          >
+            <span className="w-8 h-px bg-gray-600" />
+            OneTex System
+          </motion.div>
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mt-4 tracking-tighter uppercase leading-none"
+          >
             Operaciones <br />
-            sin fricción.
-          </h2>
+            <span className="text-gray-600">sin fricción.</span>
+          </motion.h2>
         </div>
 
         <div className="grid lg:grid-cols-12 gap-0 border border-white/10">
-          
-          {/* Left: Brutalist Interactive List */}
-          <div className="lg:col-span-5 flex flex-col border-b lg:border-b-0 lg:border-r border-white/10 overflow-hidden">
+
+          {/* Left: interactive list */}
+          <div className="lg:col-span-5 flex flex-col border-b lg:border-b-0 lg:border-r border-white/10">
             {benefits.map((benefit) => (
               <button
                 key={benefit.id}
                 onClick={() => setActiveTab(benefit.id)}
                 className={`text-left p-6 md:p-8 border-b border-white/10 last:border-b-0 transition-all duration-300 group flex items-start gap-6 ${
-                  activeTab === benefit.id 
-                    ? 'bg-white text-black' 
+                  activeTab === benefit.id
+                    ? 'bg-white text-black'
                     : 'bg-transparent text-white hover:bg-white/5'
                 }`}
               >
-                <div className={`font-mono text-sm mt-1 transition-colors ${
+                <div className={`font-mono text-sm mt-1 transition-colors shrink-0 ${
                   activeTab === benefit.id ? 'text-black font-bold' : 'text-gray-600 group-hover:text-white'
                 }`}>
                   {benefit.num}
                 </div>
                 <div>
-                  <h3 className={`font-bold text-xl uppercase tracking-tight mb-2 transition-colors`}>
+                  <h3 className="font-bold text-xl uppercase tracking-tight mb-2">
                     {benefit.title}
                   </h3>
-                  <p className={`font-light leading-relaxed transition-colors ${
-                    activeTab === benefit.id ? 'text-gray-800' : 'text-gray-400'
+                  <p className={`font-light leading-relaxed text-sm transition-colors ${
+                    activeTab === benefit.id ? 'text-gray-700' : 'text-gray-500'
                   }`}>
                     {benefit.desc}
                   </p>
@@ -104,35 +319,35 @@ export const SuiteOneTex = () => {
             ))}
           </div>
 
-          {/* Right: Dynamic Preview Area (Brutalist Terminal-style) */}
-          <div className="lg:col-span-7 bg-[#050505] p-6 flex flex-col items-center justify-center relative min-h-[500px]">
-            {/* Minimalist Top Bar */}
-            <div className="absolute top-0 left-0 w-full h-10 flex border-b border-white/10 px-4 items-center gap-4 bg-white/5">
-                <div className="w-2 h-2 rounded-full bg-white/20" />
-                <div className="w-2 h-2 rounded-full bg-white/20" />
-                <div className="w-2 h-2 rounded-full bg-white/20" />
-                <div className="ml-auto font-mono text-xs text-gray-500 uppercase tracking-widest">
-                  Preview // {activeTab}
-                </div>
+          {/* Right: live preview */}
+          <div className="lg:col-span-7 bg-[#050505] flex flex-col relative min-h-[540px] overflow-hidden">
+            {/* Top bar */}
+            <div className="h-10 border-b border-white/10 flex items-center px-5 gap-3 bg-white/[0.03] shrink-0">
+              <div className="w-2 h-2 rounded-full bg-white/15" />
+              <div className="w-2 h-2 rounded-full bg-white/15" />
+              <div className="w-2 h-2 rounded-full bg-white/15" />
+              <span className="ml-auto font-mono text-[10px] text-gray-600 uppercase tracking-widest">
+                ONETEX // {benefits.find(b => b.id === activeTab)?.title}
+              </span>
             </div>
 
-            <div className="w-full max-w-lg mt-10">
+            {/* Grid blueprint overlay */}
+            <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none" />
+
+            {/* Preview content */}
+            <div className="flex-1 p-6 md:p-10 relative z-10 overflow-auto">
               <AnimatePresence mode="wait">
-                <motion.div 
+                <motion.div
                   key={activeTab}
-                  initial={{ opacity: 0, filter: 'blur(4px)' }}
-                  animate={{ opacity: 1, filter: 'blur(0px)' }}
-                  exit={{ opacity: 0, filter: 'blur(4px)' }}
-                  transition={{ duration: 0.3 }}
-                  className="w-full aspect-[4/3]"
+                  initial={{ opacity: 0, filter: 'blur(4px)', y: 8 }}
+                  animate={{ opacity: 1, filter: 'blur(0px)', y: 0 }}
+                  exit={{ opacity: 0, filter: 'blur(4px)', y: -8 }}
+                  transition={{ duration: 0.25 }}
                 >
-                  <PreviewCard type={benefits.find(b => b.id === activeTab).preview} />
+                  {previews[activeTab]}
                 </motion.div>
               </AnimatePresence>
             </div>
-            
-            {/* Subtle Grid overlay for that technical blueprint look */}
-            <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:20px_20px] pointer-events-none" />
           </div>
 
         </div>
