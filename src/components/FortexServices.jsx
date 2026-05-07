@@ -58,7 +58,7 @@ const ServiceCard = ({ service, index, isInView }) => {
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className={`${service.span} group relative border border-white/10 hover:border-white/20 transition-colors duration-500 overflow-hidden cursor-default`}
+      className={`${service.span} group relative border border-foreground/10 hover:border-foreground/20 transition-colors duration-500 overflow-hidden cursor-default`}
     >
       {/* Cursor light */}
       <motion.div
@@ -76,7 +76,7 @@ const ServiceCard = ({ service, index, isInView }) => {
         {/* Top: number + subtitle */}
         <div className={isFullWidth ? 'md:max-w-xl' : 'flex flex-col gap-6'}>
           <div className="flex items-center justify-between mb-6">
-            <span className="font-mono text-xs uppercase tracking-widest text-gray-600">
+            <span className="font-mono text-xs uppercase tracking-widest text-muted">
               {service.number}
             </span>
             <motion.span
@@ -90,16 +90,16 @@ const ServiceCard = ({ service, index, isInView }) => {
 
           {/* Title */}
           <div className="mb-6">
-            <p className="font-mono text-xs uppercase tracking-widest text-gray-600 mb-2">
+            <p className="font-mono text-xs uppercase tracking-widest text-muted mb-2">
               {service.subtitle}
             </p>
-            <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-none group-hover:text-white transition-colors">
+            <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground tracking-tight leading-none group-hover:text-foreground transition-colors">
               {service.title}
             </h3>
           </div>
 
           {/* Desc */}
-          <p className="text-gray-500 group-hover:text-gray-300 transition-colors duration-500 font-light leading-relaxed text-base max-w-md">
+          <p className="text-muted group-hover:text-foreground transition-colors duration-500 font-light leading-relaxed text-base max-w-md">
             {service.desc}
           </p>
 
@@ -109,7 +109,7 @@ const ServiceCard = ({ service, index, isInView }) => {
               {service.tags.map((tag, i) => (
                 <span
                   key={i}
-                  className="px-3 py-1 border border-white/10 group-hover:border-white/20 text-gray-500 group-hover:text-gray-300 font-mono text-xs uppercase tracking-wider transition-colors duration-500"
+                  className="px-3 py-1 border border-foreground/10 group-hover:border-foreground/20 text-muted group-hover:text-foreground font-mono text-xs uppercase tracking-wider transition-colors duration-500"
                 >
                   {tag}
                 </span>
@@ -119,12 +119,12 @@ const ServiceCard = ({ service, index, isInView }) => {
         </div>
 
         {/* Metric + tags (right column for full-width, bottom for tall) */}
-        <div className={`flex ${isFullWidth ? 'flex-col items-start md:items-end gap-6 shrink-0' : 'items-end justify-between mt-auto pt-6 border-t border-white/5 group-hover:border-white/10 transition-colors'}`}>
+        <div className={`flex ${isFullWidth ? 'flex-col items-start md:items-end gap-6 shrink-0' : 'items-end justify-between mt-auto pt-6 border-t border-foreground/5 group-hover:border-foreground/10 transition-colors'}`}>
           <div className={isFullWidth ? 'text-right' : ''}>
-            <p className={`text-5xl md:text-6xl font-black text-white tracking-tighter leading-none ${isFullWidth ? '' : ''}`}>
+            <p className={`text-5xl md:text-6xl font-black text-foreground tracking-tighter leading-none ${isFullWidth ? '' : ''}`}>
               {service.metric}
             </p>
-            <p className="font-mono text-xs uppercase tracking-widest text-gray-600 mt-1">
+            <p className="font-mono text-xs uppercase tracking-widest text-muted mt-1">
               {service.metricLabel}
             </p>
           </div>
@@ -134,7 +134,7 @@ const ServiceCard = ({ service, index, isInView }) => {
               {service.tags.map((tag, i) => (
                 <span
                   key={i}
-                  className="px-3 py-1 border border-white/10 group-hover:border-white/20 text-gray-500 group-hover:text-gray-300 font-mono text-xs uppercase tracking-wider transition-colors duration-500"
+                  className="px-3 py-1 border border-foreground/10 group-hover:border-foreground/20 text-muted group-hover:text-foreground font-mono text-xs uppercase tracking-wider transition-colors duration-500"
                 >
                   {tag}
                 </span>
@@ -152,7 +152,7 @@ export const FortexServices = () => {
   const isInView = useInView(containerRef, { once: true, margin: "-10%" });
 
   return (
-    <section ref={containerRef} className="py-32 bg-black relative border-t border-white/10">
+    <section ref={containerRef} className="py-32 bg-background relative border-t border-foreground/10">
       <div className="container mx-auto px-4 lg:px-8 max-w-7xl">
 
         {/* Header */}
@@ -162,9 +162,9 @@ export const FortexServices = () => {
               initial={{ opacity: 0, x: -20 }}
               animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
               transition={{ duration: 0.8 }}
-              className="flex items-center gap-4 text-gray-500 font-mono text-sm uppercase tracking-widest mb-8"
+              className="flex items-center gap-4 text-muted font-mono text-sm uppercase tracking-widest mb-8"
             >
-              <span className="w-8 h-px bg-gray-600" />
+              <span className="w-8 h-px bg-muted" />
               Capacidades
             </motion.div>
 
@@ -172,7 +172,7 @@ export const FortexServices = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.8, delay: 0.1 }}
-              className="text-4xl md:text-6xl lg:text-7xl font-bold text-white tracking-tighter uppercase leading-none"
+              className="text-4xl md:text-6xl lg:text-7xl font-bold text-foreground tracking-tighter uppercase leading-none"
             >
               Arsenal <br /> Técnico.
             </motion.h2>
@@ -185,7 +185,7 @@ export const FortexServices = () => {
           >
             <a
               href="/portafolio"
-              className="text-gray-400 font-mono uppercase tracking-widest text-sm hover:text-white transition-colors border-b border-gray-600 hover:border-white pb-1"
+              className="text-muted font-mono uppercase tracking-widest text-sm hover:text-foreground transition-colors border-b border-muted hover:border-foreground pb-1"
             >
               Ver portafolio →
             </a>
