@@ -49,8 +49,8 @@ const StepCard = ({ step, index, isInView }) => {
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className={`relative group overflow-hidden transition-colors duration-500 hover:bg-white/[0.03] ${
-        !isLast ? 'border-b md:border-b-0 md:border-r border-white/10' : ''
+      className={`relative group overflow-hidden transition-colors duration-500 hover:bg-foreground/[0.03] ${
+        !isLast ? 'border-b md:border-b-0 md:border-r border-foreground/10' : ''
       }`}
     >
       {/* Cursor light */}
@@ -69,7 +69,7 @@ const StepCard = ({ step, index, isInView }) => {
         <motion.div
           animate={isHovered ? { opacity: 0.06 } : { opacity: 0.03 }}
           transition={{ duration: 0.5 }}
-          className="text-[10rem] md:text-[14rem] font-black tracking-tighter text-white leading-none"
+          className="text-[10rem] md:text-[14rem] font-black tracking-tighter text-foreground leading-none"
         >
           {step.index}
         </motion.div>
@@ -79,27 +79,27 @@ const StepCard = ({ step, index, isInView }) => {
 
         {/* Phase label */}
         <div className="flex items-center justify-between mb-12">
-          <span className="font-mono text-xs uppercase tracking-widest text-gray-600">
+          <span className="font-mono text-xs uppercase tracking-widest text-muted">
             // {step.phase}
           </span>
-          <span className="font-mono text-xs uppercase tracking-widest text-gray-700 border border-white/10 px-2 py-1 group-hover:border-white/20 group-hover:text-gray-500 transition-colors duration-300">
+          <span className="font-mono text-xs uppercase tracking-widest text-muted border border-foreground/10 px-2 py-1 group-hover:border-foreground/20 group-hover:text-muted transition-colors duration-300">
             {step.duration}
           </span>
         </div>
 
         {/* Title */}
-        <h3 className="text-2xl md:text-3xl font-bold text-white tracking-tight mb-5 group-hover:text-white transition-colors">
+        <h3 className="text-2xl md:text-3xl font-bold text-foreground tracking-tight mb-5 group-hover:text-foreground transition-colors">
           {step.title}
         </h3>
 
         {/* Description */}
-        <p className="text-gray-500 group-hover:text-gray-300 font-light leading-relaxed text-base transition-colors duration-500 mb-10">
+        <p className="text-muted group-hover:text-foreground font-light leading-relaxed text-base transition-colors duration-500 mb-10">
           {step.description}
         </p>
 
         {/* Deliverables */}
-        <div className="mt-auto pt-8 border-t border-white/5 group-hover:border-white/10 transition-colors duration-300">
-          <p className="font-mono text-[10px] uppercase tracking-widest text-gray-700 mb-4">
+        <div className="mt-auto pt-8 border-t border-foreground/5 group-hover:border-foreground/10 transition-colors duration-300">
+          <p className="font-mono text-[10px] uppercase tracking-widest text-muted mb-4">
             Entregables
           </p>
           <ul className="flex flex-col gap-2">
@@ -109,7 +109,7 @@ const StepCard = ({ step, index, isInView }) => {
                 initial={{ opacity: 0, x: -8 }}
                 animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -8 }}
                 transition={{ duration: 0.5, delay: 0.4 + index * 0.15 + i * 0.07 }}
-                className="flex items-center gap-3 text-sm text-gray-600 group-hover:text-gray-400 transition-colors duration-300"
+                className="flex items-center gap-3 text-sm text-muted group-hover:text-foreground transition-colors duration-300"
               >
                 <span className="w-1 h-1 rounded-full bg-[#0047FF] shrink-0 opacity-60 group-hover:opacity-100 transition-opacity" />
                 {item}
@@ -128,7 +128,7 @@ export const FortexProcess = () => {
   const isInView = useInView(containerRef, { once: true, margin: "-10%" });
 
   return (
-    <section ref={containerRef} className="py-32 bg-[#050505] relative border-t border-white/10">
+    <section ref={containerRef} className="py-32 bg-surface relative border-t border-foreground/10">
       <div className="container mx-auto px-4 lg:px-8 max-w-7xl">
 
         {/* Header */}
@@ -138,9 +138,9 @@ export const FortexProcess = () => {
               initial={{ opacity: 0, x: -20 }}
               animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
               transition={{ duration: 0.8 }}
-              className="flex items-center gap-4 text-gray-500 font-mono text-sm uppercase tracking-widest mb-8"
+              className="flex items-center gap-4 text-muted font-mono text-sm uppercase tracking-widest mb-8"
             >
-              <span className="w-8 h-px bg-gray-600" />
+              <span className="w-8 h-px bg-muted" />
               Metodología
             </motion.div>
 
@@ -148,7 +148,7 @@ export const FortexProcess = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.8, delay: 0.1 }}
-              className="text-4xl md:text-6xl lg:text-8xl font-bold text-white tracking-tighter uppercase leading-none"
+              className="text-4xl md:text-6xl lg:text-8xl font-bold text-foreground tracking-tighter uppercase leading-none"
             >
               Cómo <br className="hidden md:block" /> lo hacemos.
             </motion.h2>
@@ -158,7 +158,7 @@ export const FortexProcess = () => {
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : { opacity: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="text-gray-600 font-mono text-xs uppercase tracking-widest max-w-xs text-right hidden md:block"
+            className="text-muted font-mono text-xs uppercase tracking-widest max-w-xs text-right hidden md:block"
           >
             Tres fases. Sin rodeos. <br /> Sin tiempos muertos.
           </motion.p>
@@ -187,7 +187,7 @@ export const FortexProcess = () => {
         </div>
 
         {/* Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 border border-white/10">
+        <div className="grid grid-cols-1 md:grid-cols-3 border border-foreground/10">
           {steps.map((step, index) => (
             <StepCard key={index} step={step} index={index} isInView={isInView} />
           ))}
@@ -198,14 +198,14 @@ export const FortexProcess = () => {
           initial={{ opacity: 0, y: 16 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
           transition={{ duration: 0.8, delay: 0.8 }}
-          className="mt-16 flex flex-col sm:flex-row items-center justify-between gap-6 pt-8 border-t border-white/10"
+          className="mt-16 flex flex-col sm:flex-row items-center justify-between gap-6 pt-8 border-t border-foreground/10"
         >
-          <p className="text-gray-600 font-light text-sm">
+          <p className="text-muted font-light text-sm">
             ¿Listo para empezar? El primer paso es una conversación sin compromiso.
           </p>
           <a
             href="/contacto"
-            className="shrink-0 inline-flex items-center gap-3 px-6 py-3 border border-white/20 text-white font-mono text-xs uppercase tracking-widest hover:bg-white hover:text-black transition-all duration-300"
+            className="shrink-0 inline-flex items-center gap-3 px-6 py-3 border border-foreground/20 text-foreground font-mono text-xs uppercase tracking-widest hover:bg-foreground hover:text-background transition-all duration-300"
           >
             Iniciar Discovery
             <span className="text-base leading-none">→</span>
