@@ -30,7 +30,7 @@ const MagneticButton = ({ children, className, href, variant = 'primary' }) => {
   
   const variants = {
     primary: "bg-[#0047FF] text-white hover:bg-[#005FF0] hover:shadow-[0_0_30px_rgba(0,71,255,0.5)]",
-    secondary: "bg-transparent border border-white/20 text-white hover:border-white"
+    secondary: "bg-transparent border border-foreground/20 text-foreground hover:border-foreground"
   };
 
   return (
@@ -107,7 +107,7 @@ export const FortexHero = () => {
     <section 
       ref={containerRef}
       onMouseMove={handleMouseMove}
-      className="relative min-h-screen flex items-center justify-center bg-black overflow-hidden selection:bg-[#0047FF] selection:text-white"
+      className="relative min-h-screen flex items-center justify-center bg-background overflow-hidden selection:bg-[#0047FF] selection:text-white"
     >
       {/* Dynamic Cursor Light Effect */}
       <motion.div 
@@ -128,26 +128,26 @@ export const FortexHero = () => {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="flex items-center gap-4 text-gray-400 font-mono text-sm uppercase tracking-widest"
+            className="flex items-center gap-4 text-muted font-mono text-sm uppercase tracking-widest"
           >
-            <span className="w-8 h-px bg-gray-600"></span>
+            <span className="w-8 h-px bg-muted"></span>
             Fortex Digital Solutions
           </motion.div>
 
           {/* Brutalist Huge Headline */}
           <div className="flex flex-col gap-2 w-full">
-            <AnimatedText delayOffset={0.2} text="Atrae." className="text-6xl md:text-8xl lg:text-[10rem] font-black tracking-[-0.04em] text-white leading-[0.9] text-left" />
+            <AnimatedText delayOffset={0.2} text="Atrae." className="text-6xl md:text-8xl lg:text-[10rem] font-black tracking-[-0.04em] text-foreground leading-[0.9] text-left" />
             <AnimatedText delayOffset={0.6} text="Convierte." className="text-6xl md:text-8xl lg:text-[10rem] font-black tracking-[-0.04em] text-[#0047FF] leading-[0.9] text-left" />
-            <AnimatedText delayOffset={1.0} text="Escala." className="text-6xl md:text-8xl lg:text-[10rem] font-black tracking-[-0.04em] text-white leading-[0.9] text-left" />
+            <AnimatedText delayOffset={1.0} text="Escala." className="text-6xl md:text-8xl lg:text-[10rem] font-black tracking-[-0.04em] text-foreground leading-[0.9] text-left" />
           </div>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.8 }}
-            className="grid grid-cols-1 md:grid-cols-2 w-full gap-8 mt-8 border-t border-white/10 pt-8"
+            className="grid grid-cols-1 md:grid-cols-2 w-full gap-8 mt-8 border-t border-foreground/10 pt-8"
           >
-            <p className="text-xl md:text-2xl text-gray-400 font-light leading-relaxed max-w-xl">
+            <p className="text-xl md:text-2xl text-muted font-light leading-relaxed max-w-xl">
               Ingeniería de Landing Pages y E-commerce de velocidad extrema, diseñados con un solo propósito: convertir tu tráfico en ingresos y prepararte para escalar.
             </p>
 
@@ -173,11 +173,11 @@ export const FortexHero = () => {
         transition={{ delay: 2.2, duration: 1 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 flex justify-center pointer-events-none"
       >
-        <div className="w-[30px] h-[46px] border border-white/20 rounded-full flex justify-center p-2 pt-2.5 bg-black/50 backdrop-blur-sm">
+        <div className="w-[30px] h-[46px] border border-foreground/20 rounded-full flex justify-center p-2 pt-2.5 bg-background/50 backdrop-blur-sm">
           <motion.div
             animate={{ y: [0, 12, 0], opacity: [1, 0, 1] }}
             transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
-            className="w-1.5 h-1.5 bg-white rounded-full"
+            className="w-1.5 h-1.5 bg-foreground rounded-full"
           />
         </div>
       </motion.div>
