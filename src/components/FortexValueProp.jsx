@@ -63,7 +63,7 @@ const FeatureCard = ({ benefit, index }) => {
         <motion.div 
           animate={isHovered ? { scale: 1.1, opacity: 0.2 } : { scale: 1, opacity: 0.1 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          className="text-[8rem] md:text-[12rem] font-bold tracking-tighter text-white"
+          className="text-[8rem] md:text-[12rem] font-bold tracking-tighter text-foreground"
         >
           {benefit.number}
         </motion.div>
@@ -71,10 +71,10 @@ const FeatureCard = ({ benefit, index }) => {
       
       {/* Interactive Content */}
       <div className="relative z-10 flex flex-col mt-auto pt-24 md:pt-32">
-        <h3 className="text-xl md:text-2xl font-bold uppercase tracking-tight mb-4 text-white group-hover:text-[#0047FF] transition-colors duration-300">
+        <h3 className="text-xl md:text-2xl font-bold uppercase tracking-tight mb-4 text-foreground group-hover:text-[#0047FF] transition-colors duration-300">
           {benefit.title}
         </h3>
-        <p className="text-zinc-400 leading-relaxed font-light">
+        <p className="text-muted leading-relaxed font-light">
           {benefit.description}
         </p>
       </div>
@@ -84,7 +84,7 @@ const FeatureCard = ({ benefit, index }) => {
         initial={{ scaleX: 0 }}
         animate={isInView ? { scaleX: 1 } : { scaleX: 0 }}
         transition={{ duration: 0.8, delay: 0.4 + 0.2 * index, ease: "easeOut" }}
-        className="absolute bottom-0 left-0 h-[1px] w-full bg-white/10 origin-left"
+        className="absolute bottom-0 left-0 h-[1px] w-full bg-foreground/10 origin-left"
       />
       
       {/* Hover animated bottom border */}
@@ -98,7 +98,7 @@ export const FortexValueProp = () => {
   const isInView = useInView(containerRef, { once: true, margin: "-10%" });
 
   return (
-    <section ref={containerRef} className="py-24 md:py-32 bg-[#000000] relative">
+    <section ref={containerRef} className="py-24 md:py-32 bg-background relative">
       
       <div className="container mx-auto px-4 lg:px-8 max-w-7xl">
         <div className="flex flex-col lg:flex-row justify-between items-start gap-12 lg:gap-16 mb-20 lg:mb-24">
@@ -109,10 +109,10 @@ export const FortexValueProp = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.8 }}
-              className="text-4xl md:text-6xl font-bold tracking-tighter text-white uppercase leading-none"
+              className="text-4xl md:text-6xl font-bold tracking-tighter text-foreground uppercase leading-none"
             >
               Máquinas de<br />
-              <span className="text-gray-600">Conversión.</span>
+              <span className="text-muted">Conversión.</span>
             </motion.h2>
           </div>
 
@@ -122,7 +122,7 @@ export const FortexValueProp = () => {
               initial={{ opacity: 0 }}
               animate={isInView ? { opacity: 1 } : { opacity: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-lg text-zinc-400 font-light"
+              className="text-lg text-muted font-light"
             >
               No hacemos folletos digitales. Diseñamos e implementamos plataformas web de altísima velocidad, enfocadas radicalmente en el retorno de inversión y la escalabilidad de tu negocio.
             </motion.p>

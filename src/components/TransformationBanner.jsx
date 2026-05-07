@@ -12,7 +12,7 @@ export const TransformationBanner = () => {
   const isInView = useInView(ref, { once: true, margin: '-10%' });
 
   return (
-    <section ref={ref} className="py-32 bg-black border-t border-white/10 relative overflow-hidden">
+    <section ref={ref} className="py-32 bg-background border-t border-foreground/10 relative overflow-hidden">
       {/* Noise */}
       <div
         className="absolute inset-0 opacity-[0.03] pointer-events-none"
@@ -25,19 +25,19 @@ export const TransformationBanner = () => {
       <div className="container mx-auto px-4 lg:px-8 max-w-5xl relative z-10">
 
         {/* Stats row */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-0 border border-white/10 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-0 border border-foreground/10 mb-16">
           {stats.map((stat, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 16 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: i * 0.1 }}
-              className={`p-8 md:p-10 text-center ${i < stats.length - 1 ? 'border-b md:border-b-0 md:border-r border-white/10' : ''}`}
+              className={`p-8 md:p-10 text-center ${i < stats.length - 1 ? 'border-b md:border-b-0 md:border-r border-foreground/10' : ''}`}
             >
-              <p className="text-4xl md:text-5xl font-black text-white tracking-tighter leading-none mb-2">
+              <p className="text-4xl md:text-5xl font-black text-foreground tracking-tighter leading-none mb-2">
                 {stat.value}
               </p>
-              <p className="font-mono text-[10px] uppercase tracking-widest text-gray-600 max-w-[140px] mx-auto">
+              <p className="font-mono text-[10px] uppercase tracking-widest text-muted max-w-[140px] mx-auto">
                 {stat.label}
               </p>
             </motion.div>
@@ -49,13 +49,13 @@ export const TransformationBanner = () => {
           initial={{ opacity: 0, y: 24 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.3 }}
-          className="border border-white/20 bg-[#050505] p-12 md:p-20 flex flex-col items-center text-center"
+          className="border border-foreground/20 bg-surface p-12 md:p-20 flex flex-col items-center text-center"
         >
           <motion.div
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : {}}
             transition={{ delay: 0.4 }}
-            className="font-mono text-xs text-gray-600 uppercase tracking-widest mb-10"
+            className="font-mono text-xs text-muted uppercase tracking-widest mb-10"
           >
             // Transformación Operativa Digital
           </motion.div>
@@ -64,17 +64,17 @@ export const TransformationBanner = () => {
             initial={{ opacity: 0, y: 16 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.5 }}
-            className="text-4xl md:text-6xl lg:text-7xl font-bold text-white tracking-tighter uppercase leading-none mb-8"
+            className="text-4xl md:text-6xl lg:text-7xl font-bold text-foreground tracking-tighter uppercase leading-none mb-8"
           >
             Del caos, <br className="hidden md:block" />
-            <span className="text-gray-600">a la máquina.</span>
+            <span className="text-muted">a la máquina.</span>
           </motion.h2>
 
           <motion.p
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : {}}
             transition={{ delay: 0.6 }}
-            className="text-xl text-gray-400 font-light max-w-2xl mb-16 leading-relaxed"
+            className="text-xl text-muted font-light max-w-2xl mb-16 leading-relaxed"
           >
             Implementamos infraestructura técnica que destruye la dependencia humana y te devuelve el control frío de tu negocio.
           </motion.p>
@@ -87,13 +87,13 @@ export const TransformationBanner = () => {
           >
             <a
               href="/demo"
-              className="px-10 py-5 bg-white text-black font-bold uppercase tracking-widest text-sm hover:bg-gray-200 transition-colors"
+              className="px-10 py-5 bg-foreground text-background font-bold uppercase tracking-widest text-sm hover:bg-foreground/80 transition-colors"
             >
               Ejecutar Diagnóstico
             </a>
             <a
               href="/contacto"
-              className="px-10 py-5 bg-transparent border border-white/20 text-white font-bold uppercase tracking-widest text-sm hover:border-white transition-colors"
+              className="px-10 py-5 bg-transparent border border-foreground/20 text-foreground font-bold uppercase tracking-widest text-sm hover:border-foreground transition-colors"
             >
               Contactar Ingeniería
             </a>
