@@ -39,49 +39,49 @@ export const ProcessStepper = () => {
     const steps = [1, 2, 3, 4, 5];
 
   return (
-    <section className="py-32 bg-[#050505] relative border-t border-white/10 overflow-hidden">
+    <section className="py-32 bg-surface relative border-t border-foreground/10 overflow-hidden">
       <div className="container mx-auto px-4 lg:px-8 max-w-7xl relative z-10">
         
         <div className="flex flex-col md:flex-row justify-between items-end gap-12 mb-20">
             <div className="max-w-2xl">
-                <div className="flex items-center gap-4 text-gray-500 font-mono text-sm uppercase tracking-widest mb-8">
-                  <span className="w-8 h-px bg-gray-600"></span>
+                <div className="flex items-center gap-4 text-muted font-mono text-sm uppercase tracking-widest mb-8">
+                  <span className="w-8 h-px bg-muted"></span>
                   Génesis Operativa
                 </div>
-                <h2 className="text-4xl md:text-6xl font-bold tracking-tighter text-white uppercase leading-none">
+                <h2 className="text-4xl md:text-6xl font-bold tracking-tighter text-foreground uppercase leading-none">
                     Protocolo de <br/> Implementación.
                 </h2>
             </div>
-            <p className="text-gray-400 font-light max-w-sm text-lg">
+            <p className="text-muted font-light max-w-sm text-lg">
                 El software genérico se instala. Nuestras soluciones se operan, se estresan y se escalan metódicamente.
             </p>
         </div>
 
         {/* Brutalist Stepper Container */}
-        <div className="grid lg:grid-cols-12 gap-0 border border-white/20 bg-black">
+        <div className="grid lg:grid-cols-12 gap-0 border border-foreground/20 bg-background">
             
             {/* Left: Step Controls */}
-            <div className="lg:col-span-4 border-b lg:border-b-0 lg:border-r border-white/20 flex flex-col">
-                 <div className="font-mono text-xs text-gray-500 p-6 border-b border-white/10 uppercase tracking-widest">
+            <div className="lg:col-span-4 border-b lg:border-b-0 lg:border-r border-foreground/20 flex flex-col">
+                 <div className="font-mono text-xs text-muted p-6 border-b border-foreground/10 uppercase tracking-widest">
                     Seleccione Fase
                  </div>
                  {steps.map((num) => (
                      <button 
                         key={num} 
                         onClick={() => setActiveStep(num)}
-                        className={`flex items-center justify-between p-6 md:px-8 border-b border-white/10 last:border-b-0 transition-colors group ${
-                            activeStep === num 
-                            ? 'bg-white text-black' 
-                            : 'bg-transparent text-gray-500 hover:bg-white/5 hover:text-white'
+                        className={`flex items-center justify-between p-6 md:px-8 border-b border-foreground/10 last:border-b-0 transition-colors group ${
+                            activeStep === num
+                            ? 'bg-foreground text-background'
+                            : 'bg-transparent text-muted hover:bg-foreground/5 hover:text-foreground'
                         }`}
                      >
                          <span className="font-bold text-xl uppercase tracking-tighter">Fase {num}</span>
-                         <span className={`font-mono text-sm ${activeStep === num ? 'text-black' : 'text-gray-600'}`}>0{num}</span>
+                         <span className={`font-mono text-sm ${activeStep === num ? 'text-background' : 'text-muted'}`}>0{num}</span>
                      </button>
                  ))}
                  
-                 <div className="mt-auto p-6 md:px-8 bg-white/5">
-                     <a href="/contacto" className="text-white font-mono uppercase tracking-widest text-xs border-b border-gray-600 hover:border-white transition-colors pb-1">
+                 <div className="mt-auto p-6 md:px-8 bg-foreground/5">
+                     <a href="/contacto" className="text-foreground font-mono uppercase tracking-widest text-xs border-b border-muted hover:border-foreground transition-colors pb-1">
                          Iniciar fase 01 - Contacto
                      </a>
                  </div>
@@ -98,27 +98,27 @@ export const ProcessStepper = () => {
                         transition={{ duration: 0.3 }}
                         className="flex-1 flex flex-col"
                     >
-                        <div className="font-mono text-6xl md:text-8xl font-bold text-white/5 mb-8">
+                        <div className="font-mono text-6xl md:text-8xl font-bold text-foreground/5 mb-8">
                             //{activeStep}
                         </div>
                         
-                        <h3 className="text-4xl md:text-5xl font-bold text-white uppercase tracking-tighter mb-8 max-w-xl">
+                        <h3 className="text-4xl md:text-5xl font-bold text-foreground uppercase tracking-tighter mb-8 max-w-xl">
                             {stepsContent[activeStep].title}
                         </h3>
                         
-                        <p className="text-xl text-gray-400 font-light leading-relaxed max-w-2xl mb-16">
+                        <p className="text-xl text-muted font-light leading-relaxed max-w-2xl mb-16">
                             {stepsContent[activeStep].description}
                         </p>
                         
-                        <div className="mt-auto grid md:grid-cols-2 gap-12 border-t border-white/10 pt-12">
+                        <div className="mt-auto grid md:grid-cols-2 gap-12 border-t border-foreground/10 pt-12">
                             <div>
-                                <h4 className="text-white font-bold uppercase tracking-widest text-sm mb-6 flex items-center gap-4">
-                                    <span className="w-4 h-px bg-white"></span>
+                                <h4 className="text-foreground font-bold uppercase tracking-widest text-sm mb-6 flex items-center gap-4">
+                                    <span className="w-4 h-px bg-foreground"></span>
                                     {stepsContent[activeStep].detailsTitle}
                                 </h4>
                                 <ul className="space-y-4">
                                     {stepsContent[activeStep].details.slice(0, 2).map((item, i) => (
-                                        <li key={i} className="text-gray-400 font-mono text-sm uppercase bg-white/5 p-3 border border-white/10">
+                                        <li key={i} className="text-muted font-mono text-sm uppercase bg-foreground/5 p-3 border border-foreground/10">
                                             {item}
                                         </li>
                                     ))}
@@ -131,7 +131,7 @@ export const ProcessStepper = () => {
                                 </h4>
                                 <ul className="space-y-4 flex-1">
                                      {stepsContent[activeStep].details.slice(2, 4).map((item, i) => (
-                                        <li key={i} className="text-gray-400 font-mono text-sm uppercase bg-white/5 p-3 border border-white/10">
+                                        <li key={i} className="text-muted font-mono text-sm uppercase bg-foreground/5 p-3 border border-foreground/10">
                                             {item}
                                         </li>
                                     ))}

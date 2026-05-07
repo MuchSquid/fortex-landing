@@ -20,7 +20,7 @@ const ProjectCard = ({ project, index, featured = false }) => {
     >
       {/* Image container */}
       <div
-        className={`relative overflow-hidden border border-white/10 group-hover:border-white/25 transition-colors duration-500 ${featured ? 'aspect-[16/7]' : 'aspect-[4/3]'}`}
+        className={`relative overflow-hidden border border-foreground/10 group-hover:border-foreground/25 transition-colors duration-500 ${featured ? 'aspect-[16/7]' : 'aspect-[4/3]'}`}
         style={{ viewTransitionName: `project-image-wrapper-${project.slug}` }}
       >
         <img
@@ -69,17 +69,17 @@ const ProjectCard = ({ project, index, featured = false }) => {
               className="w-1.5 h-1.5 rounded-full shrink-0"
               style={{ backgroundColor: project.accent }}
             />
-            <span className="font-mono text-[10px] uppercase tracking-widest text-gray-600">
+            <span className="font-mono text-[10px] uppercase tracking-widest text-muted">
               {project.category}
             </span>
           </div>
           <h3
-            className="text-xl md:text-2xl font-bold text-white tracking-tight group-hover:text-gray-300 transition-colors duration-300"
+            className="text-xl md:text-2xl font-bold text-foreground tracking-tight group-hover:text-muted transition-colors duration-300"
             style={{ viewTransitionName: `project-title-${project.slug}` }}
           >
             {project.title}
           </h3>
-          <p className="text-gray-600 text-sm leading-relaxed mt-2 max-w-md">
+          <p className="text-muted text-sm leading-relaxed mt-2 max-w-md">
             {project.description}
           </p>
         </div>
@@ -89,7 +89,7 @@ const ProjectCard = ({ project, index, featured = false }) => {
           {project.tags.slice(0, 3).map((tag) => (
             <span
               key={tag}
-              className="font-mono text-[10px] uppercase tracking-wider text-gray-700 group-hover:text-gray-500 transition-colors"
+              className="font-mono text-[10px] uppercase tracking-wider text-muted group-hover:text-foreground transition-colors"
             >
               {tag}
             </span>
@@ -111,7 +111,7 @@ export const PortafolioGallery = () => {
   const rest = filtered.slice(1);
 
   return (
-    <section className="py-24 lg:py-32 bg-[#050505] relative">
+    <section className="py-24 lg:py-32 bg-surface relative">
       <div className="container mx-auto px-4 lg:px-8 max-w-7xl relative z-10">
 
         {/* Header */}
@@ -122,9 +122,9 @@ export const PortafolioGallery = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7 }}
-              className="flex items-center gap-4 text-gray-500 font-mono text-sm uppercase tracking-widest mb-6"
+              className="flex items-center gap-4 text-muted font-mono text-sm uppercase tracking-widest mb-6"
             >
-              <span className="w-8 h-px bg-gray-600" />
+              <span className="w-8 h-px bg-muted" />
               Nuestro Trabajo
             </motion.div>
 
@@ -133,10 +133,10 @@ export const PortafolioGallery = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7, delay: 0.1 }}
-              className="text-4xl md:text-6xl lg:text-7xl font-bold text-white tracking-tighter uppercase leading-none"
+              className="text-4xl md:text-6xl lg:text-7xl font-bold text-foreground tracking-tighter uppercase leading-none"
             >
               Casos de <br />
-              <span className="text-gray-600">Estudio.</span>
+              <span className="text-muted">Estudio.</span>
             </motion.h2>
           </div>
 
@@ -154,8 +154,8 @@ export const PortafolioGallery = () => {
                 onClick={() => setActiveCategory(cat)}
                 className={`font-mono text-xs uppercase tracking-widest px-4 py-2 border transition-all duration-300 ${
                   activeCategory === cat
-                    ? 'border-white text-black bg-white'
-                    : 'border-white/15 text-gray-500 hover:border-white/40 hover:text-gray-300'
+                    ? 'border-foreground text-background bg-foreground'
+                    : 'border-foreground/15 text-muted hover:border-foreground/40 hover:text-foreground'
                 }`}
               >
                 {cat}
@@ -165,8 +165,8 @@ export const PortafolioGallery = () => {
         </div>
 
         {/* Project count */}
-        <div className="flex items-center gap-3 mb-12 border-t border-white/10 pt-8">
-          <span className="font-mono text-xs uppercase tracking-widest text-gray-700">
+        <div className="flex items-center gap-3 mb-12 border-t border-foreground/10 pt-8">
+          <span className="font-mono text-xs uppercase tracking-widest text-muted">
             Mostrando
           </span>
           <AnimatePresence mode="wait">
@@ -176,7 +176,7 @@ export const PortafolioGallery = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 6 }}
               transition={{ duration: 0.2 }}
-              className="font-mono text-xs uppercase tracking-widest text-gray-500"
+              className="font-mono text-xs uppercase tracking-widest text-muted"
             >
               {filtered.length} proyecto{filtered.length !== 1 ? 's' : ''}
             </motion.span>
@@ -210,13 +210,13 @@ export const PortafolioGallery = () => {
         </AnimatePresence>
 
         {/* Bottom divider */}
-        <div className="mt-24 pt-8 border-t border-white/10 flex items-center justify-between">
-          <span className="font-mono text-xs uppercase tracking-widest text-gray-700">
+        <div className="mt-24 pt-8 border-t border-foreground/10 flex items-center justify-between">
+          <span className="font-mono text-xs uppercase tracking-widest text-muted">
             Fortex Digital Solutions — {new Date().getFullYear()}
           </span>
           <a
             href="/contacto"
-            className="font-mono text-xs uppercase tracking-widest text-gray-500 hover:text-white transition-colors border-b border-gray-700 hover:border-white pb-1"
+            className="font-mono text-xs uppercase tracking-widest text-muted hover:text-foreground transition-colors border-b border-muted hover:border-foreground pb-1"
           >
             Iniciar un proyecto →
           </a>
