@@ -10,5 +10,10 @@ export default defineConfig({
     plugins: [tailwindcss()]
   },
 
+  server: {
+    host: true,
+    allowedHosts: true
+  },
+
   integrations: [react()]
 });

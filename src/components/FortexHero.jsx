@@ -29,8 +29,8 @@ const MagneticButton = ({ children, className, href, variant = 'primary' }) => {
   const baseStyles = "relative inline-flex items-center justify-center px-8 py-4 font-medium text-lg overflow-hidden transition-all duration-300 rounded-none";
   
   const variants = {
-    primary: "bg-[#0047FF] text-white hover:bg-[#005FF0] hover:shadow-[0_0_30px_rgba(0,71,255,0.5)]",
-    secondary: "bg-transparent border border-foreground/20 text-foreground hover:border-foreground"
+    primary: "bg-[var(--color-primary)] text-white hover:bg-[var(--color-primary-hover)] hover:shadow-[var(--shadow-glow)]",
+    secondary: "bg-transparent border border-[var(--border-color-strong)] text-foreground hover:border-foreground"
   };
 
   return (
@@ -101,13 +101,13 @@ export const FortexHero = () => {
     mouseY.set(y);
   };
 
-  const backgroundGradient = useMotionTemplate`radial-gradient(circle 800px at calc(${mouseX} * 100%) calc(${mouseY} * 100%), rgba(0, 71, 255, 0.12), transparent 80%)`;
+  const backgroundGradient = useMotionTemplate`radial-gradient(circle 800px at calc(${mouseX} * 100%) calc(${mouseY} * 100%), var(--color-primary-subtle), transparent 80%)`;
 
   return (
     <section 
       ref={containerRef}
       onMouseMove={handleMouseMove}
-      className="relative min-h-screen flex items-center justify-center bg-background overflow-hidden selection:bg-[#0047FF] selection:text-white"
+      className="relative min-h-screen flex items-center justify-center bg-background overflow-hidden selection:bg-[var(--color-primary)] selection:text-white"
     >
       {/* Dynamic Cursor Light Effect */}
       <motion.div 
@@ -137,7 +137,7 @@ export const FortexHero = () => {
           {/* Brutalist Huge Headline */}
           <div className="flex flex-col gap-2 w-full">
             <AnimatedText delayOffset={0.2} text="Atrae." className="text-6xl md:text-8xl lg:text-[10rem] font-black tracking-[-0.04em] text-foreground leading-[0.9] text-left" />
-            <AnimatedText delayOffset={0.6} text="Convierte." className="text-6xl md:text-8xl lg:text-[10rem] font-black tracking-[-0.04em] text-[#0047FF] leading-[0.9] text-left" />
+            <AnimatedText delayOffset={0.6} text="Convierte." className="text-6xl md:text-8xl lg:text-[10rem] font-black tracking-[-0.04em] text-[var(--color-primary)] leading-[0.9] text-left" />
             <AnimatedText delayOffset={1.0} text="Escala." className="text-6xl md:text-8xl lg:text-[10rem] font-black tracking-[-0.04em] text-foreground leading-[0.9] text-left" />
           </div>
 

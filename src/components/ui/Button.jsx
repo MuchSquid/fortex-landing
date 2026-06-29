@@ -6,10 +6,10 @@ export const Button = ({ children, variant = 'primary', className, ...props }) =
   const baseStyles = 'px-6 py-2.5 rounded-full font-medium transition-all duration-300 inline-flex items-center justify-center cursor-pointer';
 
   const variants = {
-    primary: 'bg-blue-600 hover:bg-blue-700 text-white shadow-[0_0_20px_rgba(37,99,235,0.3)] hover:shadow-[0_0_30px_rgba(37,99,235,0.5)]',
-    secondary: 'bg-foreground/10 hover:bg-foreground/20 text-foreground backdrop-blur-md border border-foreground/10',
-    outline: 'border border-blue-500/50 text-blue-400 hover:bg-blue-500/10 hover:border-blue-500',
-    ghost: 'text-muted hover:text-foreground hover:bg-foreground/5'
+    primary: 'bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)] text-white shadow-[var(--shadow-glow)] hover:shadow-[var(--shadow-glow)]',
+    secondary: 'bg-[var(--bg-glass)] hover:bg-[var(--bg-glass-hover)] text-foreground backdrop-blur-md border border-[var(--border-color)]',
+    outline: 'border border-[var(--color-accent)]/50 text-[var(--color-accent)] hover:bg-[var(--color-primary-subtle)] hover:border-[var(--color-accent)]',
+    ghost: 'text-muted hover:text-foreground hover:bg-[var(--bg-glass)]'
   };
 
   if (props.href) {

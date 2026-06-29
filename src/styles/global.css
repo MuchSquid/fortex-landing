@@ -1,12 +1,6 @@
 @import "tailwindcss";
 
 @theme {
-  /* Color tokens — dark defaults (overridden per theme below) */
-  --color-background: #0a0a0a;
-  --color-surface: #050505;
-  --color-foreground: #f8fafc;
-  --color-muted: #9ca3af;
-
   /* Typography */
   --font-sans: "Inter", system-ui, -apple-system, sans-serif;
 
@@ -19,27 +13,66 @@
   --radius-xl: 16px;
   --radius-full: 999px;
 
-  /* Shadows */
-  --shadow-card: 0 4px 30px rgba(0, 0, 0, 0.1);
-
   /* Backdrop */
   --blur-glass: blur(20px);
 }
 
 /* Dark theme (explicit class — set by FOUC script) */
 html.dark {
+  /* Backgrounds */
   --color-background: #0a0a0a;
   --color-surface: #050505;
   --color-foreground: #f8fafc;
   --color-muted: #9ca3af;
+  
+  /* Brand colors */
+  --color-primary: #0047FF;
+  --color-primary-hover: #005FF0;
+  --color-primary-glow: rgba(0, 71, 255, 0.5);
+  --color-primary-subtle: rgba(0, 71, 255, 0.12);
+  
+  /* Accents */
+  --color-accent: #3b82f6;
+  --color-accent-hover: #2563eb;
+  
+  /* Borders & shadows */
+  --border-color: rgba(248, 250, 252, 0.1);
+  --border-color-strong: rgba(248, 250, 252, 0.2);
+  --shadow-card: 0 4px 30px rgba(0, 0, 0, 0.4);
+  --shadow-glow: 0 0 30px rgba(0, 71, 255, 0.5);
+  
+  /* Interactive states */
+  --bg-glass: rgba(248, 250, 252, 0.05);
+  --bg-glass-hover: rgba(248, 250, 252, 0.1);
 }
 
 /* Light theme */
 html.light {
-  --color-background: #f5f5f5;
-  --color-surface: #ebebeb;
-  --color-foreground: #111111;
-  --color-muted: #555555;
+  /* Backgrounds - refined light palette */
+  --color-background: #ffffff;
+  --color-surface: #f8f9fa;
+  --color-foreground: #0a0a0a;
+  --color-muted: #6b7280;
+  
+  /* Brand colors - adapted for light theme */
+  --color-primary: #0047FF;
+  --color-primary-hover: #0039CC;
+  --color-primary-glow: rgba(0, 71, 255, 0.25);
+  --color-primary-subtle: rgba(0, 71, 255, 0.06);
+  
+  /* Accents */
+  --color-accent: #2563eb;
+  --color-accent-hover: #1d4ed8;
+  
+  /* Borders & shadows - light-adapted */
+  --border-color: rgba(10, 10, 10, 0.08);
+  --border-color-strong: rgba(10, 10, 10, 0.15);
+  --shadow-card: 0 4px 30px rgba(0, 0, 0, 0.08);
+  --shadow-glow: 0 0 30px rgba(0, 71, 255, 0.25);
+  
+  /* Interactive states */
+  --bg-glass: rgba(10, 10, 10, 0.03);
+  --bg-glass-hover: rgba(10, 10, 10, 0.06);
 }
 
 body {
@@ -49,16 +82,16 @@ body {
   overflow-x: hidden;
 }
 
-/* Glassmorphism utilities — auto-adapt via foreground token */
+/* Glassmorphism utilities — auto-adapt via theme tokens */
 .glass {
-  background: color-mix(in srgb, var(--color-foreground) 5%, transparent);
+  background: var(--bg-glass-hover);
   backdrop-filter: blur(10px);
-  border: 1px solid color-mix(in srgb, var(--color-foreground) 10%, transparent);
+  border: 1px solid var(--border-color-strong);
 }
 
 .glass-card {
-  background: color-mix(in srgb, var(--color-foreground) 3%, transparent);
+  background: var(--bg-glass);
   backdrop-filter: blur(20px);
-  border: 1px solid color-mix(in srgb, var(--color-foreground) 5%, transparent);
+  border: 1px solid var(--border-color);
   box-shadow: var(--shadow-card);
 }
