@@ -25,7 +25,7 @@ export const ThemeToggle = () => {
   return (
     <button
       onClick={toggle}
-      className="flex items-center gap-1.5 px-3 py-2 bg-foreground/5 border border-foreground/10 backdrop-blur-md text-muted hover:text-foreground hover:border-foreground/20 transition-all duration-300 rounded-lg text-xs font-mono uppercase tracking-wider"
+      className="flex items-center gap-1.5 px-3 py-2 bg-[var(--bg-glass)] border border-[var(--border-color)] backdrop-blur-md text-muted hover:text-foreground hover:border-[var(--border-color-strong)] transition-all duration-300 rounded-lg text-xs font-mono uppercase tracking-wider"
       aria-label={isDark ? 'Cambiar a tema claro' : 'Cambiar a tema oscuro'}
     >
       <span>{isDark ? '☀' : '☾'}</span>

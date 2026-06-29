@@ -2,7 +2,7 @@ import React from 'react';
 
 export const Footer = () => {
   return (
-    <footer className="py-12 border-t border-foreground/10 bg-background">
+    <footer className="py-12 border-t border-[var(--border-color)] bg-background">
       <div className="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-6">
         {/* Logo */}
         <a href="/" className="flex items-center gap-2 group hover:opacity-80 transition-opacity">

@@ -26,7 +26,7 @@ export const Navbar = () => {
   return (
     <nav className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 ${
       isScrolled && !isMobileMenuOpen
-        ? 'bg-background/90 backdrop-blur-xl border-b border-foreground/10 py-4'
+        ? 'bg-background/90 backdrop-blur-xl border-b border-[var(--border-color)] py-4'
         : 'bg-transparent py-4 lg:py-6'
     }`}>
       <div className="container mx-auto px-4 flex items-center justify-between relative">
@@ -64,8 +64,8 @@ export const Navbar = () => {
           <button
             className={`p-2.5 rounded-xl transition-all duration-300 border backdrop-blur-md ${
               isMobileMenuOpen
-                ? 'bg-foreground/10 border-foreground/20 text-foreground'
-                : 'bg-foreground/5 border-foreground/10 text-muted hover:text-foreground hover:bg-foreground/10'
+                ? 'bg-[var(--bg-glass-hover)] border-[var(--border-color-strong)] text-foreground'
+                : 'bg-[var(--bg-glass)] border-[var(--border-color)] text-muted hover:text-foreground hover:bg-[var(--bg-glass-hover)]'
             }`}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
@@ -81,7 +81,7 @@ export const Navbar = () => {
             initial={{ opacity: 0, y: -20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -20, scale: 0.95 }}
-            className="lg:hidden absolute top-full left-4 right-4 mt-2 rounded-2xl bg-surface border border-foreground/10 overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.3)]"
+            className="lg:hidden absolute top-full left-4 right-4 mt-2 rounded-2xl bg-surface border border-[var(--border-color)] overflow-hidden shadow-[var(--shadow-card)]"
           >
             <div className="p-8 flex flex-col gap-6">
               <div className="flex flex-col gap-4">
